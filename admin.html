@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel Administrativo - Mãos de Fada</title>
+<link rel="stylesheet" href="admin.css">
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+<script src="firebase-config.js"></script>
+</head>
+<body>
+<div class="container-admin">
+    
+    <header class="admin-header">
+        <div>
+            <h1>🛠️ Painel Administrativo</h1>
+            <p>Gerencie os produtos da sua loja</p>
+        </div>
+        <div style="display:flex; gap:10px; align-items:center;">
+            <a href="index.html" class="btn-voltar">← Voltar para o Site</a>
+            <button onclick="fazerLogout()" class="btn-logout">🚪 Sair</button>
+        </div>
+    </header>
+
+    <div class="admin-grid">
+        
+        <!-- FORMULÁRIO PARA ADICIONAR PRODUTO -->
+        <section class="card">
+            <h2>➕ Adicionar Novo Produto</h2>
+            <form id="formProduto">
+                
+                <div class="form-group">
+                    <label>Nome do Produto:</label>
+                    <input type="text" id="nomeProduto" placeholder="Ex: Caneca Personalizada" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Preço (R$):</label>
+                    <input type="number" id="precoProduto" step="0.01" min="0" placeholder="Ex: 25.50" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Descrição do Produto:</label>
+                    <textarea id="descricaoProduto" placeholder="Descreva os detalhes do produto, materiais, dimensões, etc..." rows="4" style="width:100%;padding:10px;border:2px solid #e6d6f5;border-radius:8px;font-family:inherit;resize:vertical;"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Categoria:</label>
+                    <select id="categoriaProduto" required>
+                        <option value="">Selecione uma categoria</option>
+                        <option value="caneca">Caneca</option>
+                        <option value="caixa-padrinho">Caixa Padrinho</option>
+                        <option value="quadro">Quadro</option>
+                        <option value="adesivo">Adesivo</option>
+                        <option value="centro-mesa">Centro de Mesa</option>
+                        <option value="pegue-monte-cavalete">Pegue e Monte</option>
+                        <option value="nova">➕ Nova Categoria</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="novaCategoriaGroup" style="display:none;">
+                    <label>Nome da Nova Categoria:</label>
+                    <input type="text" id="novaCategoria" placeholder="Ex: chaveiro">
+                    <small>Use apenas letras minúsculas e hífens (sem espaços)</small>
+                </div>
+
+                <div class="form-group">
+                    <label style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+                        <input type="checkbox" id="produtoDestaque" style="width:20px;height:20px;cursor:pointer;">
+                        <span>⭐ Produto em Destaque</span>
+                    </label>
+                    <small>Produtos em destaque aparecem primeiro no site</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Imagens do Produto:</label>
+                    <input type="file" id="imagensProduto" accept="image/*" multiple>
+                    <small>📸 Clique para selecionar uma ou mais fotos da galeria</small>
+                    <small id="avisoImagens" style="display:none;color:#2196F3;font-weight:bold;margin-top:5px;">💡 Imagens atuais pré-selecionadas. Selecione novas para substituir ou deixe como está.</small>
+                    <div id="previewImagens" class="preview-container"></div>
+                </div>
+
+                <button type="submit" class="btn-adicionar">➕ Adicionar Produto</button>
+                <button type="button" id="btnCancelarEdicao" class="btn-cancelar" onclick="cancelarEdicao()" style="display:none;">✖ Cancelar Edição</button>
+            </form>
+        </section>
+
+        <!-- LISTA DE PRODUTOS CADASTRADOS -->
+        <section class="card">
+            <h2>📦 Produtos Cadastrados (<span id="totalProdutos">0</span>)</h2>
+            <div id="listaProdutos" class="lista-produtos">
+                <!-- Produtos serão inseridos aqui -->
+            </div>
+        </section>
+
+    </div>
+
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+/* ═══════════════════════════════════════════════════════════════════
+   LOGIN.CSS - ESTILOS DA TELA DE LOGIN
+   ═══════════════════════════════════════════════════════════════════
+   Este arquivo contém os estilos da página de autenticação
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ========== RESET GLOBAL ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ========== BODY E CENTRALIZAÇÃO ========== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #fdf6ec 0%, #f8d7da 100%); /* Gradiente bege para rosa */
+    min-height: 100vh;                   /* Altura mínima da tela toda */
+    display: flex;
+    justify-content: center;             /* Centraliza horizontalmente */
+    align-items: center;                 /* Centraliza verticalmente */
+    padding: 20px;
+}
+
+/* ========== CONTAINER DO LOGIN ========== */
+.login-container {
+    width: 100%;
+    max-width: 450px;                    /* Largura máxima */
+}
+
+/* ========== CAIXA BRANCA DO LOGIN ========== */
+.login-box {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15); /* Sombra forte */
+    text-align: center;
+}
+
+/* ========== LOGO E NOME DA LOJA ========== */
+.logo-login {
+    display: flex;
+    flex-direction: column;              /* Empilha imagem e texto */
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.logo-login img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;                  /* Imagem redonda */
+    object-fit: cover;
+    border: 3px solid #f8d7da;           /* Borda rosa */
+}
+
+.logo-login h1 {
+    color: #e03e39;                      /* Vermelho */
+    font-size: 28px;
+}
+
+/* ========== TÍTULOS ========== */
+h2 {
+    color: #555;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.subtitulo {
+    color: #999;                         /* Cinza claro */
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+/* ========== CAMPO DE SENHA ========== */
+.input-group {
+    margin-bottom: 25px;
+    text-align: left;                    /* Alinha label à esquerda */
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Wrapper para o input e botão de mostrar/esconder */
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px 45px 15px 15px;        /* Espaço para o botão */
+    border: 2px solid #f8d7da;           /* Borda rosa */
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+
+/* Quando o campo está em foco */
+.input-group input:focus {
+    outline: none;
+    border-color: #e6d6f5;               /* Muda para roxo */
+    box-shadow: 0 0 0 3px rgba(230, 214, 245, 0.2); /* Brilho roxo */
+}
+
+/* Botão de mostrar/esconder senha */
+.btn-toggle-senha {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-toggle-senha:hover {
+    transform: scale(1.2);
+}
+
+/* ========== BOTÃO ENTRAR ========== */
+.btn-entrar {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%); /* Gradiente verde */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.btn-entrar:hover {
+    transform: translateY(-2px);         /* Levanta ao passar o mouse */
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+.btn-entrar:active {
+    transform: translateY(0);            /* Volta ao clicar */
+}
+
+/* ========== MENSAGEM DE ERRO ========== */
+.mensagem-erro {
+    background: #ffebee;                 /* Fundo vermelho claro */
+    color: #c62828;                      /* Texto vermelho escuro */
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 20px;
+    border-left: 4px solid #c62828;      /* Barra vermelha na esquerda */
+    font-weight: 600;
+    animation: shake 0.5s;               /* Animação de tremor */
+}
+
+/* Animação de tremor quando aparece erro */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* ========== LINK VOLTAR ========== */
+.link-voltar {
+    display: inline-block;
+    margin-top: 25px;
+    color: #999;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.link-voltar:hover {
+    color: #555;                         /* Escurece ao passar o mouse */
+    transform: translateX(-5px);         /* Move para esquerda */
+}
+
+/* ========== RESPONSIVO (MOBILE) ========== */
+@media (max-width: 480px) {
+    .login-box {
+        padding: 30px 20px;              /* Menos padding em mobile */
+    }
+    
+    .logo-login h1 {
+        font-size: 24px;
+    }
+    
+    h2 {
+        font-size: 20px;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   🎨 GUIA DE CORES DA TELA DE LOGIN
+   ═══════════════════════════════════════════════════════════════════
+   
+   PALETA DE CORES:
+   • #e03e39  → Vermelho (logo, título)
+   • #4CAF50  → Verde (botão entrar)
+   • #f8d7da  → Rosa claro (bordas)
+   • #e6d6f5  → Roxo claro (foco nos campos)
+   • #fdf6ec  → Bege claro (fundo gradiente)
+   • #c62828  → Vermelho escuro (mensagem de erro)
+   • #ffebee  → Rosa muito claro (fundo do erro)
+   • #555     → Cinza (textos)
+   • #999     → Cinza claro (subtítulos)
+   
+   ═══════════════════════════════════════════════════════════════════ */

@@ -1,0 +1,591 @@
+/* ═══════════════════════════════════════════════════════════════════
+   STYLE.CSS - ESTILOS DO SITE PRINCIPAL
+   ═══════════════════════════════════════════════════════════════════
+   Este arquivo contém todos os estilos visuais do site
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ========== RESET E CONFIGURAÇÕES BÁSICAS ========== */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;  /* Fonte padrão do site */
+    max-width: 100%;
+    overflow-x: hidden;                    /* Evita scroll horizontal */
+    background: #fdf6ec;                   /* Cor de fundo bege claro */
+    color: #555;                           /* Cor do texto padrão (cinza) */
+}
+
+/* ========== CABEÇALHO (HEADER) ========== */
+header {
+    display: flex;
+    justify-content: space-between;        /* Espaça logo e menu */
+    align-items: center;
+    flex-wrap: wrap;                       /* Quebra linha em telas pequenas */
+    padding: 20px;
+    background: #f8d7da;                   /* Cor de fundo rosa claro */
+}
+
+/* Logo e nome da loja */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;                             /* Espaço entre imagem e texto */
+}
+
+.logo img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;                    /* Deixa a imagem redonda */
+    object-fit: cover;                     /* Ajusta a imagem sem distorcer */
+    border: none;                          /* Remove borda */
+    box-shadow: none;                      /* Remove sombra */
+}
+
+/* ========== MENU DE NAVEGAÇÃO ========== */
+nav {
+    display: flex;
+    gap: 10px;                             /* Espaço entre os botões */
+    flex-wrap: nowrap;                     /* Não quebra linha */
+    overflow-x: auto;                      /* Permite scroll horizontal */
+    padding: 10px 20px;
+    background: #f8d7da;                   /* Fundo rosa como o header */
+    -webkit-overflow-scrolling: touch;     /* Scroll suave com dedo (iOS) */
+}
+
+/* Estilo do scrollbar do menu */
+nav::-webkit-scrollbar {
+    height: 6px;
+}
+
+nav::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+nav::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+}
+
+nav::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* Botões de filtro (Todos, Caneca, etc) */
+nav button {
+    padding: 8px 15px;
+    border-radius: 20px;                   /* Botões arredondados */
+    border: none;
+    background: #f8d7da;                   /* Rosa claro como a faixa */
+    color: #555;
+    cursor: pointer;
+    transition: 0.3s;                      /* Animação suave */
+    white-space: nowrap;                   /* Não quebra o texto */
+    font-weight: 600;
+}
+
+nav button:hover { 
+    background: #e6d6f5;                   /* Muda para roxo claro ao passar o mouse */
+}
+
+/* Botão do painel administrativo (engrenagem) */
+.btn-admin {
+    padding: 8px 15px;
+    border-radius: 20px;
+    background: #ffeb3b;                   /* Cor amarela */
+    text-decoration: none;
+    font-size: 18px;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    box-shadow: none;                      /* Remove sombra */
+    cursor: pointer;
+}
+
+.btn-admin:hover {
+    background: #fdd835;                   /* Amarelo mais escuro */
+    transform: scale(1.15) rotate(90deg);  /* Aumenta e gira ao passar o mouse */
+}
+
+/* ========== CATÁLOGO DE PRODUTOS ========== */
+.catalogo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Grid responsivo */
+    gap: 25px;                             /* Espaço entre os produtos */
+    padding: 30px;
+}
+
+/* ========== CARD DO PRODUTO ========== */
+.produto {
+    background: white;
+    border-radius: 20px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: transform 0.3s;
+    position: relative;
+}
+
+.produto:hover { 
+    transform: translateY(-5px);
+}
+
+/* Badge de destaque */
+.badge-destaque {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: linear-gradient(135deg, #ffd700 0%, #ffb700 100%);
+    color: #333;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    box-shadow: 0 3px 10px rgba(255, 215, 0, 0.4);
+    z-index: 5;
+}
+
+/* ========== CARROSSEL/SLIDER (APENAS SWIPE) ========== */
+.slider-container {
+    position:static;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto 5px;
+    overflow:hidden;
+    border-radius: 0%;
+    background: #f0f0f0;
+}
+
+.slider-wrapper {
+    display:flex;
+    transition: transform 0.3s ease;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.slider-wrapper:active {
+    cursor: grabbing;
+}
+
+.slide-item {
+    min-width: 100%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+}
+
+.slide-item img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+    cursor: pointer;
+    pointer-events: none;
+}
+
+/* Indicadores (bolinhas discretas) */
+.slider-indicator {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    z-index: 10;
+}
+
+.indicator-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    transition: all 0.3s;
+}
+
+.indicator-dot.active {
+    background: white;
+    width: 18px;
+    border-radius: 3px;
+}
+
+.produto img { 
+    width: 100%; 
+    border-radius: 15px; 
+}
+
+/* Botão "Adicionar ao Carrinho" */
+.produto button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: none;
+    background: #f8d7da;                   /* Rosa claro */
+    cursor: pointer;
+    width: 100%;
+}
+
+.produto button:hover { 
+    background: #e6d6f5;                   /* Muda para roxo claro */
+}
+
+/* ========== SELETOR DE QUANTIDADE ========== */
+.quantidade-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.btn-quantidade {
+    width: 35px !important;
+    height: 35px;
+    border-radius: 50% !important;
+    background: #e6d6f5 !important;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    color: #555;
+}
+
+.btn-quantidade:hover {
+    background: #cfe8d5 !important;
+    transform: scale(1.1);
+}
+
+.btn-quantidade:active {
+    transform: scale(0.95);
+}
+
+.quantidade-container input {
+    width: 50px;
+    height: 35px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid #e6d6f5;
+    border-radius: 10px;
+    background: white;
+    color: #555;
+}
+
+/* ========== CARRINHO FLUTUANTE ========== */
+/* Botão fixo no canto da tela */
+.carrinho {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #e6d6f5;                   /* Roxo claro */
+    padding: 12px 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    z-index: 100;
+}
+
+/* ========== OVERLAY DO CARRINHO ========== */
+.overlay-carrinho {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 140;
+    transition: display 0.3s ease;
+}
+
+.overlay-carrinho.ativo {
+    display: block;
+}
+
+/* ========== PAINEL LATERAL DO CARRINHO ========== */
+.painel-carrinho {
+    position: fixed;
+    right: -100%;
+    top: 0;
+    width: 150px;
+    height: 100vh;
+    background: white;
+    box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+    padding: 20px;
+    transition: right 0.4s ease;
+    overflow-y: auto;
+    z-index: 150;
+}
+
+.painel-carrinho.ativo { 
+    right: 0 !important;
+}
+
+.painel-carrinho h3 { 
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.painel-carrinho ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+}
+
+/* Botão de remover item do carrinho */
+.btn-remover {
+    background-color: #ff4d4d;             /* Vermelho */
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+    min-width: 35px;
+}
+
+.btn-remover:hover { 
+    background-color: #cc0000;             /* Vermelho mais escuro */
+    transform: scale(1.05);
+}
+
+/* Botões de quantidade no carrinho */
+.btn-qtd-carrinho {
+    background-color: #e6d6f5;             /* Roxo claro */
+    color: #555;
+    border: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-qtd-carrinho:hover {
+    background-color: #cfe8d5;             /* Verde claro */
+    transform: scale(1.1);
+}
+
+.btn-qtd-carrinho:active {
+    transform: scale(0.95);
+}
+
+/* Botão de remover apenas 1 unidade */
+.btn-menos {
+    background-color: #ffa726;             /* Laranja */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    transition: 0.3s;
+    min-width: 30px;
+}
+
+.btn-menos:hover {
+    background-color: #fb8c00;             /* Laranja mais escuro */
+}
+
+/* ========== MODAL (IMAGEM AMPLIADA) ========== */
+.modal {
+    display: none;                         /* Escondido por padrão */
+    position: fixed;
+    inset: 0;                              /* Ocupa toda a tela */
+    background: rgba(0,0,0,0.7);           /* Fundo escuro semi-transparente */
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+}
+
+.modal img { 
+    max-width: 90%; 
+    border-radius: 15px; 
+}
+
+/* ========== BOTÃO FINALIZAR PEDIDO ========== */
+#finalizarPedidoBtn {
+    background-color: #4CAF50;             /* Verde */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 12px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    width: 100%;
+    text-align: center;
+}
+
+#finalizarPedidoBtn:hover {
+    background-color: #45a049;             /* Verde mais escuro */
+    transform: translateY(-2px);           /* Efeito de elevação */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* ========== BOTÃO FECHAR CARRINHO ========== */
+#fecharCarrinhoBtn {
+    background-color: #e03e39;             /* Vermelho */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 12px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    width: 50%;
+    text-align: center;
+}
+
+/* ========== RODAPÉ ========== */
+footer {
+    background-color: #f8d7da;             /* Rosa claro */
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+    color: #555;                           /* Cinza */
+    margin-top: 20px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+}
+
+/* ========== RESPONSIVO (MOBILE) ========== */
+@media (max-width: 768px) {
+    header { 
+        flex-direction:column;            /* Empilha logo e menu */
+        text-align: center;
+        padding: 15px;
+    }
+    
+    .logo {
+        margin-bottom: 10px;
+    }
+    
+    nav { 
+        justify-content: center;
+        gap: 5px;
+        width: 100%;
+        padding: 10px 0;
+    }
+    
+    .catalogo { 
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 15px; 
+        gap: 15px; 
+    }
+    
+    .produto {
+        padding: 12px;
+    }
+    
+    .produto button { 
+        width: 100%; 
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .slider-container {
+        max-width: 100%;
+    }
+    
+    .slide-item img {
+        height: 350px !important;
+    }
+    
+    .painel-carrinho { 
+        width: 100%;                       /* Carrinho ocupa tela toda */
+        right: -100%;
+        padding: 15px;
+    }
+    
+    .painel-carrinho.ativo { 
+        right: 0 !important;
+    }
+    
+    .carrinho { 
+        bottom: 15px; 
+        right: 15px; 
+        padding: 10px 15px; 
+        font-size: 14px;
+        z-index: 100;
+    }
+    
+    .quantidade-container {
+        gap: 8px;
+    }
+    
+    .btn-quantidade {
+        width: 30px !important;
+        height: 30px;
+        font-size: 16px;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   🎨 GUIA DE CORES DO SITE
+   ═══════════════════════════════════════════════════════════════════
+   
+   ⚠️ COR DOS PREÇOS DOS PRODUTOS:
+   A cor dos preços é definida no script.js, linha ~70
+   Procure por: color:#e03e39
+   
+   ⚠️ COR DA BORDA DA MINIATURA ATIVA:
+   Linha 127: border-color: #e03e39 (vermelho)
+   
+   PALETA DE CORES PRINCIPAL:
+   • #fdf6ec  → Bege claro (fundo do site)
+   • #f8d7da  → Rosa claro (header, footer, botões)
+   • #e6d6f5  → Roxo claro (botões de filtro, carrinho, scroll)
+   • #cfe8d5  → Verde claro (hover dos botões)
+   • #e03e39  → Vermelho (preços, miniatura ativa) ← COR DOS PREÇOS
+   • #ffeb3b  → Amarelo (botão admin)
+   • #4CAF50  → Verde (botão finalizar)
+   • #ff4d4d  → Vermelho claro (botão remover)
+   • #555     → Cinza (textos)
+   
+   ONDE MUDAR A COR DOS PREÇOS:
+   1. Abra o arquivo script.js
+   2. Procure por "color:#e03e39"
+   3. Mude para a cor desejada
+   
+   ONDE MUDAR A COR DA MINIATURA ATIVA:
+   1. Neste arquivo (style.css)
+   2. Procure por ".miniatura-ativa"
+   3. Mude "border-color: #e03e39"
+   
+   EXEMPLOS DE CORES:
+   • Verde: #4CAF50
+   • Azul: #2196F3
+   • Laranja: #FF9800
+   • Roxo: #9C27B0
+   
+   ═══════════════════════════════════════════════════════════════════
+   
+   ✨ NOVOS RECURSOS:
+   • Miniaturas roláveis (scroll horizontal)
+   • Borda na miniatura ativa
+   • Hover com zoom nas miniaturas
+   • Scroll suave e estilizado
+   • Responsivo para mobile (miniaturas maiores)
+   
+   ═══════════════════════════════════════════════════════════════════ */

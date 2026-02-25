@@ -1,0 +1,431 @@
+/* ═══════════════════════════════════════════════════════════════════
+   ADMIN.CSS - ESTILOS DO PAINEL ADMINISTRATIVO
+   ═══════════════════════════════════════════════════════════════════
+   Este arquivo contém todos os estilos do painel admin
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ========== RESET GLOBAL ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ========== CONFIGURAÇÕES DO BODY ========== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #fdf6ec 0%, #f8d7da 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container-admin {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ========== CABEÇALHO DO ADMIN ========== */
+.admin-header {
+    background: white;
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.admin-header h1 {
+    color: #e03e39;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.admin-header p {
+    color: #999;
+    font-size: 14px;
+}
+
+/* ========== BOTÕES DO HEADER ========== */
+.btn-voltar {
+    background: #e6d6f5;
+    padding: 12px 24px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-voltar:hover {
+    background: #cfe8d5;
+    transform: translateY(-2px);
+}
+
+.btn-logout {
+    background: #f8d7da;
+    padding: 12px 24px;
+    border-radius: 20px;
+    border: none;
+    color: #555;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 14px;
+}
+
+.btn-logout:hover {
+    background: #e6d6f5;
+    transform: translateY(-2px);
+}
+
+/* ========== LAYOUT EM GRID ========== */
+.admin-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* ========== CARDS ========== */
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+    color: #555;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #f8d7da;
+    font-size: 20px;
+}
+
+/* ========== FORMULÁRIO ========== */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #f8d7da;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: all 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #e6d6f5;
+    box-shadow: 0 0 0 3px rgba(230, 214, 245, 0.2);
+}
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+    font-size: 12px;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* ========== BOTÕES PRINCIPAIS ========== */
+.btn-adicionar {
+    width: 100%;
+    padding: 15px;
+    background: #f8d7da;
+    color: #555;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(248, 215, 218, 0.3);
+}
+
+.btn-adicionar:hover {
+    background: #e6d6f5;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(230, 214, 245, 0.4);
+}
+
+.btn-adicionar:active {
+    transform: translateY(0);
+}
+
+.btn-cancelar {
+    background: #f8d7da;
+    color: #555;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    box-shadow: 0 3px 10px rgba(248, 215, 218, 0.3);
+    margin-left: 10px;
+}
+
+.btn-cancelar:hover {
+    background: #e6d6f5;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(230, 214, 245, 0.6);
+}
+
+/* ========== LISTA DE PRODUTOS ========== */
+.lista-produtos {
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.lista-produtos::-webkit-scrollbar {
+    width: 8px;
+}
+
+.lista-produtos::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.lista-produtos::-webkit-scrollbar-thumb {
+    background: #f8d7da;
+    border-radius: 10px;
+}
+
+/* ========== CARD DE PRODUTO ========== */
+.produto-item {
+    background: linear-gradient(135deg, #fdf6ec 0%, #fff 100%);
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 5px solid #f8d7da;
+    margin-bottom: 15px;
+    transition: all 0.3s;
+}
+
+.produto-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.produto-item h3 {
+    color: #e03e39;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.produto-item p {
+    color: #666;
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.produto-item .preco {
+    color: #4caf5c;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.produto-item .categoria-badge {
+    display: inline-block;
+    background: #e6d6f5;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    color: #555;
+    margin-top: 5px;
+}
+
+/* ========== PREVIEW DAS IMAGENS ========== */
+.imagens-preview {
+    display: flex;
+    gap: 8px;
+    margin: 12px 0;
+    flex-wrap: wrap;
+}
+
+.imagens-preview img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #f8d7da;
+    transition: all 0.3s;
+}
+
+.imagens-preview img:hover {
+    transform: scale(1.1);
+    border-color: #e6d6f5;
+}
+
+/* ========== BOTÕES DE AÇÃO ========== */
+.btn-remover {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    box-shadow: 0 3px 10px rgba(255, 77, 77, 0.3);
+    flex: 1;
+}
+
+.btn-remover:hover {
+    background: #cc0000;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 77, 77, 0.4);
+}
+
+.btn-destaque {
+    background: #e6d6f5;
+    color: #555;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    box-shadow: 0 3px 10px rgba(230, 214, 245, 0.3);
+    flex: 1;
+}
+
+.btn-destaque:hover {
+    background: #cfe8d5;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(207, 232, 213, 0.6);
+}
+
+.btn-destaque.ativo {
+    background: #ffd700;
+    color: #333;
+}
+
+.btn-destaque.ativo:hover {
+    background: #ffb700;
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.6);
+}
+
+.btn-editar {
+    background: #e6d6f5;
+    color: #555;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    box-shadow: 0 3px 10px rgba(230, 214, 245, 0.3);
+    flex: 1;
+}
+
+.btn-editar:hover {
+    background: #cfe8d5;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(207, 232, 213, 0.6);
+}
+
+/* ========== PREVIEW DE IMAGENS ========== */
+.preview-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    min-height: 60px;
+}
+
+.preview-item {
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.preview-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #f8d7da;
+}
+
+.preview-item .btn-remover-preview {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #ff4d4d;
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.preview-item .btn-remover-preview:hover {
+    background: #cc0000;
+    transform: scale(1.1);
+}
+
+/* ========== INPUT DE ARQUIVO ========== */
+input[type="file"] {
+    padding: 12px;
+    border: 2px dashed #f8d7da;
+    border-radius: 10px;
+    cursor: pointer;
+    background: #fafafa;
+}
+
+/* ========== RESPONSIVO ========== */
+@media (max-width: 1024px) {
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    body {
+        padding: 10px;
+    }
+    
+    .card {
+        padding: 20px;
+    }
+}

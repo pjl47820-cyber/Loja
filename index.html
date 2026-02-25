@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mãos de Fada</title>
+
+<!-- Arquivo de estilos CSS do site -->
+<link rel="stylesheet" href="style.css">
+
+<!-- ========== FIREBASE SDK ========== -->
+<!-- Biblioteca principal do Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<!-- Biblioteca do Firestore (banco de dados) -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<!-- Arquivo com as credenciais do Firebase -->
+<script src="firebase-config.js"></script>
+</head>
+<body>
+
+<!-- ========== CABEÇALHO DO SITE ========== -->
+<header>
+    <!-- Logo e nome da loja -->
+    <div class="logo">
+        <img src="imagen.jpeg" alt="Mão de Fada">
+        <h1>Mãos de Fada</h1>
+    </div>
+    
+    <!-- Menu de navegação com filtros e botão admin -->
+    <nav>
+        <!-- Botões para filtrar produtos por categoria -->
+        <button onclick="filtrar('todos')">Todos</button>
+        <button onclick="filtrar('caneca')">Caneca</button>
+        <button onclick="filtrar('caixa-padrinho')">Caixa Padrinho</button>
+        <button onclick="filtrar('quadro')">Quadros</button>
+        <button onclick="filtrar('adesivo')">Adesivo</button>
+        
+        <!-- Botão para acessar o painel administrativo (protegido por senha) -->
+        <a href="login.html" class="btn-admin" title="Painel Administrativo">⚙️</a>
+    </nav>
+</header>
+
+<!-- ========== CATÁLOGO DE PRODUTOS ========== -->
+<!-- Os produtos são carregados automaticamente do Firebase pelo script.js -->
+<section class="catalogo" id="catalogo">
+    <!-- Os produtos serão inseridos aqui dinamicamente pelo JavaScript -->
+</section>
+
+<!-- ========== MODAL PARA AMPLIAR IMAGENS ========== -->
+<!-- Quando clicar em uma imagem, ela abre ampliada neste modal -->
+<div id="modal" class="modal" onclick="fecharModal()">
+    <img id="imagemModal" alt="Imagem ampliada">
+</div>
+
+<!-- ========== CARRINHO DE COMPRAS FLUTUANTE ========== -->
+<!-- Botão fixo no canto da tela mostrando quantidade de itens -->
+<div class="carrinho" id="botaoCarrinho">
+    🛒 <span id="contador">0</span>
+</div>
+
+<!-- ========== OVERLAY DO CARRINHO ========== -->
+<!-- Fundo escuro que aparece quando o carrinho abre -->
+<div id="overlayCarrinho" class="overlay-carrinho"></div>
+
+<!-- ========== PAINEL LATERAL DO CARRINHO ========== -->
+<!-- Abre quando clica no botão do carrinho -->
+<div id="painelCarrinho" class="painel-carrinho">
+    <!-- Botão para fechar o painel -->
+    <button id="fecharCarrinhoBtn">✖ Fechar</button>
+    
+    <h3>Seu Carrinho</h3>
+    
+    <!-- Lista de produtos no carrinho -->
+    <ul id="listaCarrinho"></ul>
+    
+    <!-- Total do carrinho -->
+    <p id="totalCarrinho">Total: R$ 0,00</p>
+    
+    <!-- Botão para finalizar pedido via WhatsApp -->
+    <button id="finalizarPedidoBtn">Finalizar Pedido</button>
+</div>
+
+<!-- ========== RODAPÉ ========== -->
+<footer>
+    <p>© Desde 2023 Mão de Fada - Alto padrão em cada detalhe</p>
+</footer>
+
+<!-- ========== JAVASCRIPT DO SITE ========== -->
+<!-- Arquivo com toda a lógica do site (carregar produtos, carrinho, etc) -->
+<script src="script.js"></script>
+</body>
+</html>

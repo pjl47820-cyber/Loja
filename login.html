@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - Mãos de Fada</title>
+<link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+<div class="login-container">
+    <div class="login-box">
+        <div class="logo-login">
+            <img src="imagen.jpeg" alt="Mãos de Fada">
+            <h1>Mãos de Fada</h1>
+        </div>
+        
+        <h2>🔒 Acesso Administrativo</h2>
+        <p class="subtitulo">Digite a senha para acessar o painel</p>
+        
+        <form id="formLogin">
+            <div class="input-group">
+                <label for="senha">Senha:</label>
+                <div class="password-wrapper">
+                    <input 
+                        type="password" 
+                        id="senha" 
+                        placeholder="Digite a senha"
+                        autocomplete="off"
+                        required
+                    >
+                    <button type="button" class="btn-toggle-senha" onclick="toggleSenha()" title="Mostrar/Esconder senha">
+                        👁️
+                    </button>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn-entrar">
+                🔓 Entrar
+            </button>
+        </form>
+        
+        <div id="mensagemErro" class="mensagem-erro" style="display:none;">
+            ❌ Senha incorreta! Tente novamente.
+        </div>
+        
+        <a href="index.html" class="link-voltar">← Voltar para o site</a>
+    </div>
+</div>
+
+<script src="login.js"></script>
+</body>
+</html>
