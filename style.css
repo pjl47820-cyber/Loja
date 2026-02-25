@@ -149,17 +149,17 @@ nav button:hover {
 
 /* ========== CARROSSEL/SLIDER (APENAS SWIPE) ========== */
 .slider-container {
-    position:static;
+    position: relative;
     width: 100%;
-    max-width: 100%;
-    margin: 0 auto 5px;
-    overflow:hidden;
-    border-radius: 0%;
+    max-width: 300px;
+    margin: 0 auto 10px;
+    overflow: hidden;
+    border-radius: 15px;
     background: #f0f0f0;
 }
 
 .slider-wrapper {
-    display:flex;
+    display: flex;
     transition: transform 0.3s ease;
     cursor: grab;
     user-select: none;
@@ -180,8 +180,8 @@ nav button:hover {
 }
 
 .slide-item img {
-    width: 600px;
-    height: 300px;
+    width: 100%;
+    height: 250px;
     object-fit: cover;
     display: block;
     cursor: pointer;
@@ -509,7 +509,7 @@ footer {
     }
     
     .slide-item img {
-        height: 350px !important;
+        height: 200px;
     }
     
     .painel-carrinho { 
